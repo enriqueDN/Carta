@@ -3,20 +3,22 @@ body {
   background: linear-gradient(to bottom, #ffe6e6, #fff);
   font-family: Arial, sans-serif;
   display: flex;
-  height: 100vh;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 .container {
   position: relative;
   text-align: center;
+  width: 100%;
 }
 
 .heart {
   background: none;
   border: none;
-  font-size: 100px;
+  font-size: 300px;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -27,21 +29,23 @@ body {
 
 #messageBox {
   position: absolute;
-  top: -150px;
+  top: 200px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #fff0f5;
   border: 2px solid #f88;
   border-radius: 15px;
   padding: 20px;
-  width: 300px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
 
 #messageBox p {
   margin: 0;
-  font-size: 16px;
+  font-size: 19px;
 }
 
 #closeBtn {
@@ -49,6 +53,7 @@ body {
   top: 5px;
   right: 10px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .hidden {
@@ -56,36 +61,79 @@ body {
 }
 
 #heartParticles {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 999;
 }
 
 .particle {
-  position: absolute;
-  font-size: 20px;
-  animation: float 3s linear forwards;
-  color: #f55;
-  opacity: 0.8;
+  position: fixed;
+  font-size: 30px;
+  color: #ff3366;
+  opacity: 1;
+  pointer-events: none;
+  animation: explode 1.5s ease-out forwards;
+  z-index: 999;
 }
 
-@keyframes float {
+@keyframes explode {
   0% {
-    transform: translateY(0) scale(1);
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(calc(var(--dx) * 0.9), calc(var(--dy) * 0.9)) scale(1.5) rotate(var(--rotate));
     opacity: 0.8;
   }
   100% {
-    transform: translateY(-200px) scale(0.5);
+    transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(calc(var(--rotate) * 2));
     opacity: 0;
   }
 }
 
 #spotifyEmbed iframe {
   width: 100%;
+  max-width: 100%;
+  height: 80px;
   border-radius: 12px;
   margin-top: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .heart {
+    font-size: 180px;
+  }
+
+  #messageBox {
+    top: 100px;
+    padding: 15px;
+  }
+
+  #messageBox p {
+    font-size: 16px;
+  }
+
+  #closeBtn {
+    font-size: 16px;
+  }
+
+  .particle {
+    font-size: 20px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 5;
 }
