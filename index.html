@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>❤️ Carta para Ti ❤️</title>
+  <title>❤️ Para Ti ❤️</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="overlay hidden" id="overlay"></div>
 
@@ -13,9 +15,11 @@
     <button id="heartButton" class="heart">❤️</button>
 
     <div id="messageBox" class="hidden">
-      <span id="closeBtn">✖️</span>
+      <div class="heart-decorator">❤️</div>
+      <span id="closeBtn" class="close-circle">X</span>
       <p id="messageText"></p>
       <div id="spotifyEmbed" class="hidden"></div>
+      <div id="mediaEmbed" class="hidden"></div>
     </div>
 
     <div id="heartParticles"></div>
@@ -23,4 +27,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
