@@ -52,7 +52,7 @@ const messages = [
   },
   {
     text: "Un día mas estando contigo ❤️",
-    image: 'imagenes/Imagen1.jpg'
+    image: 'imagenes/imagen1.jpg'
   },
   {
     text: "Un buen beso en un buen lugar 💏",
